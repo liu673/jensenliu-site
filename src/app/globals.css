@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+/* ---------- 设计 token ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --canvas: #f5f6f4;
+  --surface: #ffffff;
+  --ink: #14161a;
+  --ink-2: #3d434b;
+  --muted: #6b7079;
+  --line: #dcdfda;
+  --accent: #2457f5;
+  --accent-soft: #e6ecfe;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --canvas: #121417;
+    --surface: #1a1d21;
+    --ink: #ecedea;
+    --ink-2: #c9ccc6;
+    --muted: #8c9199;
+    --line: #2b2f35;
+    --accent-soft: #1b2440;
   }
 }
 
+/* 每个视角一个强调色，切换视角时整页跟着变 */
+[data-view="engineer"] {
+  --accent: #2457f5;
+  --accent-soft: #e6ecfe;
+}
+[data-view="product"] {
+  --accent: #128a64;
+  --accent-soft: #e1f3ec;
+}
+[data-view="story"] {
+  --accent: #b8441f;
+  --accent-soft: #f8e6df;
+}
+@media (prefers-color-scheme: dark) {
+  [data-view="engineer"] {
+    --accent: #6d8dff;
+    --accent-soft: #1b2440;
+  }
+  [data-view="product"] {
+    --accent: #3fbf95;
+    --accent-soft: #14302a;
+  }
+  [data-view="story"] {
+    --accent: #e8734a;
+    --accent-soft: #3a2119;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans:
+    var(--font-plex-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", system-ui, sans-serif;
+  --font-mono:
+    var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas,
+    monospace;
+  --font-serif:
+    var(--font-plex-serif), "Songti SC", "Noto Serif CJK SC", Georgia, serif;
+}
+
+html {
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 200ms ease;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* 视角切换时的内容交叉淡入：只在用户操作后发生 */
+@keyframes view-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.view-in {
+  animation: view-in 260ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .view-in {
+    animation: none;
+  }
+  body {
+    transition: none;
+  }
+}
+
+/* ---------- 打印：下载 PDF 直接走浏览器打印 ---------- */
+@media print {
+  :root {
+    --canvas: #fff;
+    --surface: #fff;
+    --ink: #000;
+    --ink-2: #222;
+    --muted: #555;
+    --line: #bbb;
+  }
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .print-break-avoid {
+    break-inside: avoid;
+  }
 }
