@@ -1,0 +1,110 @@
+/**
+ * 技术术语词典：把同一个东西的不同写法归并成一个词。
+ * 第一项是展示用的规范名，后面是别名。匹配不区分大小写。
+ *
+ * 只收"多种写法常见"的词；只有一种写法的词交给分词器处理即可。
+ */
+export const DICTIONARY: string[][] = [
+  // 语言
+  ["Python", "python3", "py"],
+  ["Java"],
+  ["Go", "golang"],
+  ["TypeScript", "ts"],
+  ["JavaScript", "js"],
+  ["C++", "cpp"],
+  ["SQL"],
+  ["Shell", "bash", "linux shell"],
+
+  // 大模型与 AI
+  ["大模型", "LLM", "LLMs", "大语言模型", "语言大模型", "large language model"],
+  ["RAG", "检索增强", "检索增强生成", "retrieval augmented generation"],
+  ["Agent", "智能体", "agents", "AI Agent", "agentic"],
+  ["提示词工程", "prompt engineering", "prompt", "提示词", "提示工程"],
+  ["微调", "fine-tuning", "finetune", "fine tune", "finetuning", "SFT"],
+  ["LoRA", "peft"],
+  ["RLHF", "强化学习", "reinforcement learning"],
+  ["向量数据库", "vector database", "vector db", "向量检索", "Milvus", "Pinecone", "Qdrant", "Chroma", "Weaviate"],
+  ["Embedding", "embeddings", "向量化", "词向量", "文本向量"],
+  ["LangChain", "langchain"],
+  ["LlamaIndex", "llama index", "llama-index"],
+  ["MCP", "model context protocol"],
+  ["多模态", "multimodal", "multi-modal"],
+  ["OpenAI", "GPT", "ChatGPT", "gpt-4", "gpt-4o"],
+  ["Claude", "anthropic"],
+  ["Transformer", "transformers"],
+  ["BERT"],
+  ["PyTorch", "torch"],
+  ["TensorFlow", "tf"],
+
+  // NLP
+  ["NLP", "自然语言处理", "natural language processing"],
+  ["命名实体识别", "NER", "实体识别", "实体抽取"],
+  ["关系抽取", "relation extraction"],
+  ["信息抽取", "information extraction", "IE"],
+  ["文本分类", "text classification"],
+  ["意图识别", "intent recognition", "intent detection"],
+  ["对话系统", "chatbot", "对话机器人", "客服机器人", "dialogue system"],
+  ["OCR", "文字识别", "光学字符识别"],
+  ["知识图谱", "KG", "knowledge graph", "图谱"],
+  ["机器学习", "ML", "machine learning"],
+  ["深度学习", "DL", "deep learning"],
+  ["MITRE ATT&CK", "ATT&CK", "attack framework"],
+
+  // 数据与存储
+  ["Neo4j", "图数据库", "graph database"],
+  ["MySQL"],
+  ["PostgreSQL", "postgres", "pg"],
+  ["Redis"],
+  ["MongoDB", "mongo"],
+  ["Elasticsearch", "ES", "elastic search"],
+  ["Kafka"],
+  ["Pandas", "pandas"],
+  ["NumPy", "numpy"],
+  ["Spark", "pyspark"],
+
+  // 后端与工程
+  ["FastAPI", "fast api"],
+  ["Django"],
+  ["Flask"],
+  ["Spring", "spring boot", "springboot"],
+  ["Node.js", "nodejs", "node"],
+  ["RESTful", "REST", "restful api", "rest api"],
+  ["gRPC"],
+  ["微服务", "microservice", "microservices"],
+  ["Docker", "容器", "容器化"],
+  ["Kubernetes", "k8s"],
+  ["CI/CD", "cicd", "持续集成", "持续交付"],
+  ["Git", "github", "gitlab"],
+  ["Linux"],
+  ["AWS", "amazon web services"],
+  ["阿里云", "aliyun"],
+  ["云原生", "cloud native"],
+  ["高并发", "高并发场景"],
+  ["分布式", "分布式系统"],
+  ["单元测试", "unit test", "unit testing"],
+
+  // 前端
+  ["React", "reactjs", "react.js"],
+  ["Vue", "vuejs", "vue.js"],
+  ["Next.js", "nextjs"],
+  ["Tailwind", "tailwindcss"],
+  ["HTML/CSS", "html", "css"],
+  ["前端", "frontend", "front-end"],
+  ["全栈", "fullstack", "full-stack", "full stack"],
+
+  // 角色与方法
+  ["FDE", "forward deployed engineer", "前向部署工程师", "驻场工程师", "解决方案工程师", "solution engineer", "solutions engineer"],
+  ["产品经理", "PM", "product manager"],
+  ["产品思维", "product sense", "产品意识"],
+  ["ToB", "to b", "2b", "b端", "企业客户", "企业级"],
+  ["ToC", "to c", "2c", "c端"],
+  ["敏捷", "agile", "scrum"],
+  ["需求分析", "需求拆解", "需求梳理"],
+  ["跨团队", "跨部门", "cross-functional"],
+  ["客户沟通", "客户交流", "对接客户", "客户需求"],
+  ["英语", "english", "英文"],
+  ["开源", "open source", "opensource"],
+  ["数据分析", "data analysis"],
+  ["数据可视化", "可视化", "visualization"],
+  ["A/B 测试", "ab test", "a/b test", "ab测试"],
+];

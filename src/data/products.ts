@@ -44,7 +44,26 @@ export interface Product {
 }
 
 export const products: Product[] = [
-  // 第一个产品定下来后写在这里
+  {
+    slug: "jd-match",
+    name: "JD 匹配器",
+    tagline: "把招聘要求和简历放在一起，看关键词对上了多少、缺了什么、哪些可以删。",
+    type: "web",
+    status: "live",
+    updated: "2026-09-26",
+    stack: ["Next.js", "TypeScript", "Intl.Segmenter 中文分词", "纯前端，无后端"],
+    links: {
+      use: "/tools/jd-match",
+      github: "https://github.com/liu673/jensenliu-site/tree/main/src/lib/jd-match",
+    },
+    why: "我自己在改简历的时候，总是凭感觉判断和 JD 对不对得上。做这个工具是想把这件事变成能看见的东西：JD 在意的词，简历里到底有没有。它只算关键词覆盖率，不假装能预测录用结果——但改完再贴一次，看数字有没有变，这个反馈回路本身就很有用。",
+    notes: [
+      "中文分词用浏览器自带的 Intl.Segmenter，零依赖；但它会把“知识图谱”切成“知识”和“图谱”，所以先用一个术语词典把技术词整体抠出来，再分词。",
+      "词典还负责同义词归并：大模型 / LLM、微调 / fine-tuning、知识图谱 / KG 算同一个词。",
+      "第一版把“JavaScript”的别名“js”命中了“Next.js”里的“.js”，改成全局最长匹配优先才解决。",
+      "所有计算都在浏览器里完成，简历内容不会离开你的设备。这不是技术选择，是这类工具的底线。",
+    ],
+  },
 ];
 
 export function getProduct(slug: string) {
